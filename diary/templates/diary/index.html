@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %} <!-- User is logged in -->
+
+  <div class = "index-head">Hello {{ user.username }}! </div>
+
+  <div class = standardBox>
+    <h4 id = "index-subHead"> What would you like to do today? <h4/>
+
+    <ul id = "actions-list">
+      <li class = "ai"><a  href = "{% url 'write' %}">Write</a></li>
+      <li class = "ai"><a href = "{% url 'profile' %}">Profile</a></li>
+      <li class = "ai"><a href = "{% url 'logout' %}">Logout</a></li>
+    </ul>
+
+  </div>
+{% else %}
+  <meta http-equiv="REFRESH" content="0;url=/">
+{% endif %}
+{% endblock %}

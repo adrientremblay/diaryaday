@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Write{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <div class = "index-head">New Entry</div>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-success">Save</button>
+    </form>
+{% else %}
+  <meta http-equiv="REFRESH" content="0;url=/landing.html">
+{% endif %}
+{% endblock %}

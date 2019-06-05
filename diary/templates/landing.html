@@ -1,0 +1,49 @@
+{% load static %}
+
+{% if not user.is_authenticated %}
+<html>
+  <head>
+    <title>diaryaday</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> <!-- JQuery -->
+    <link href='https://fonts.googleapis.com/css?family=Cedarville Cursive' rel='stylesheet'> <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Reenie Beanie' rel='stylesheet'>
+    <link rel = "stylesheet" type = "text/css" href = "{% static "diary/styles.css" %}" \> <!-- StyleSheet -->
+    <script src="{% static "zroller.js" %}"></script> <!-- zrollerl.js -->
+  </head>
+  <body>
+
+    <div id = "page1" class = zroller> <!-- Page 1 -->
+      <div id = "header">
+        DiaryaDay<span style = "font-size : 15px">.com<span>
+        <div class = "headerButton"><a href = "{% url 'login' %}">login</a></div>
+        <div class = "headerButton"><a href = "{% url 'signup' %}">signup</a></div>
+      </div>
+
+      <div style = "background-image : url({% static 'diary/images/landingbook.png' %})" id = "bookContainer">
+        <span id = "bookMessage">what's a day in the life?<span>
+      </div>
+    </div>
+
+    <div id = "page2" style = "background-image : url({% static 'diary/images/feather.png' %})" class = "zroller"> <!-- Page 2 -->
+      <p id = "featherText">write an anonymous diary entry and in exchange<br> read the entry of another user</p>
+    </div>
+
+    <div id = "page3" style = "background-image : url({% static 'diary/images/aboutBackground.png' %})" class = "zroller"> <!-- page 3 -->
+        <div  id = "aboutDiv">
+          <span id = "aboutHead">How it works</span>
+
+          <ul id = "aboutList">
+            <li>Create an account</li>
+            <li>Write a diary entry</li>
+            <li>Trade entries with another anymous user from around the world</li>
+            <li>Both entries are deleted forever</li>
+          </ul>
+        </div>
+    </div>
+
+  </body>
+</html>
+
+{% else %}
+  <meta http-equiv="REFRESH" content="0;url=/diary/">
+{% endif %}

@@ -1,0 +1,10 @@
+<div id = "lg-header" class = "text-center">
+
+  <div class = "centerDiv">DiaryaDay</div>
+
+  {% if user.is_authenticated %}
+    <div style = "display : inline-block ; float : left">{{ user.username }}</div>
+    <div class = "hElement"><a href="{% url 'logout' %}">logout</a></div>
+    <div class = "hElement"><a href="{% url 'index' %}">home</a></div>
+  {% endif %}
+</div>

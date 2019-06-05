@@ -1,0 +1,97 @@
+body {
+  margin : 0px 0px 0px 0px;
+  height : 100%;
+  position : flex;
+}
+
+* {
+  font-family : sans-serif;
+}
+
+#header {
+  width : 100vw;
+  background-color : #dddddd;
+  font-size : 30px;
+  letter-spacing: 2px;
+  padding : 15px 15px 15px 25px;
+  font-weight : 300;
+  height : 7vh;
+  position : absolute;
+  opacity: 0.75;
+
+  /* Preventing padding from affecting width */
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+#page1 {
+
+}
+
+.headerButton {
+  float : right;
+  margin-right : 10px;
+  z-index : 2;
+
+}
+
+#bookContainer {
+  /* border : 1px solid black; */
+  height : 100vh;
+  width : 100%;
+  text-align: center;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size : 50% auto;
+  line-height: 100vh;
+}
+
+#bookMessage {
+  font-size: 70px;
+  font-family: "Cedarville Cursive";
+}
+
+.zroller {
+  position: absolute;
+  height : 100vh;
+  width : 100vw;
+}
+
+#page2 {
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+#featherText {
+  float : right;
+  margin-right: 100px;
+  margin-top : 20%;
+  font-size: 40px;
+  text-align: right;
+  font-family: 'Reenie Beanie';
+}
+
+#aboutDiv {
+  margin : 50px 0px 0px 50px;
+  background-color: rgba(256, 256, 256, 0.5);
+  display: inline-block;
+  padding : 25px 25px 25px 25px;
+  border-radius: 5%;
+  border: 2px solid black;
+  font-size: 30px;
+}
+
+#aboutHead {
+  font-size : 50px;
+  font-family: fantasy;
+  font-weight: bold;
+}
+
+#aboutList {
+  line-height: 75px;
+}
+
+#page3 {
+  background-size : 100% auto;
+}
