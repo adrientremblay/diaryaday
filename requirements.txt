@@ -5,3 +5,4 @@ django_q
 django-ckeditor
 django_countries
 django_crispy_forms
+django_redis
