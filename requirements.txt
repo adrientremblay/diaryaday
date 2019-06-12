@@ -1,0 +1,7 @@
+django
+gunicorn
+django-heroku
+django_q
+ckeditor
+django_countries
+crispy_forms'
