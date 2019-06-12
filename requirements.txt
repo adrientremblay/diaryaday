@@ -4,4 +4,4 @@ django-heroku
 django_q
 django-ckeditor
 django_countries
-crispy_forms
+django_crispy_forms
