@@ -2,6 +2,6 @@ django
 gunicorn
 django-heroku
 django_q
-ckeditor
+django-ckeditor
 django_countries
 crispy_forms
