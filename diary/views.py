@@ -1,3 +1,7 @@
+#importing os
+import os
+
+#importing django libaries
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -8,6 +12,7 @@ from django.shortcuts import get_object_or_404
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth import views as auth_views
 
+#importing models
 from .forms import writerCreationForm, writerChangeForm, changePasswordForm, EntryForm
 from .models import Entry, Writer
 from datetime import datetime
