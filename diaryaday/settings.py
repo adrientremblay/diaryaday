@@ -141,7 +141,7 @@ CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": "redis://diaryaday:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -164,7 +164,7 @@ Q_CLUSTER = {
     'cpu_affinity': 1,
     'label': 'Django Q',
     'redis': {
-        'host': '127.0.0.1',
+        'host': 'diaryaday.com',
         'port': 6379,
         'db': 0, }
 }
@@ -181,8 +181,3 @@ CKEDITOR_CONFIGS = {
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
-
-# connecting to database
-
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
