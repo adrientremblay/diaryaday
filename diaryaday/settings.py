@@ -179,5 +179,10 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+# try:
+#     from settings_local import *
+# except ImportError as e:
+#     pass
+
 # Activate Django-Heroku.
 django_heroku.settings(locals())
