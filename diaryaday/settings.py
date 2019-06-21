@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
+from boto.s3.connection import S3Connection
+s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7+w14kjz@b@-odsgf8d1xwp9p(^vwt)0o%34eu*l*qs&01-t=n'
+SECRET_KEY = os.environ['PENIS']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True #CHANGE TO FALSE LATER
 
 ALLOWED_HOSTS = []
 
@@ -133,7 +135,7 @@ USE_TZ = True
 # Static files
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/Users/adrientremblay/Documents/Coding/ddd-venv/diaryaday/diary/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 
 # Caching
