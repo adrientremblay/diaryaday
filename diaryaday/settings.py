@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
-from boto.s3.connection import S3Connection
+from boto3.s3.connection import S3Connection
 s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
