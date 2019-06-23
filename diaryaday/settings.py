@@ -25,8 +25,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ALLOWED_HOSTS = []
 
 #i have no fucking IDEA:
-from boto.s3.connection import S3Connection
-s3 = S3Connection('AKIAJ56PGWFHCZSK7Y5Q', 'LBCifCoM66vtuevJC1uf8AMdURPcNPkFQzoK/TpL')
+# from boto.s3.connection import S3Connection
+# s3 = S3Connection('AKIAJ56PGWFHCZSK7Y5Q', 'LBCifCoM66vtuevJC1uf8AMdURPcNPkFQzoK/TpL')
 
 # Application definition
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'django_countries',
     'crispy_forms',
-    'boto3',
+    'boto',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
