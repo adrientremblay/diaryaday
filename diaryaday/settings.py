@@ -15,6 +15,10 @@ import django_heroku
 # import boto3
 # s3 = boto3.resource('s3')
 
+SECRET_KEY = os.environ['SECRET_KEY']
+
+DEBUG = os.environ['DEBUG']
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -124,8 +128,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-
 # Static files
 
 STATIC_URL = '/static/'
@@ -141,6 +143,40 @@ CKEDITOR_CONFIGS = {
         'height': 300,
     },
 }
+
+# Caching
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": os.environ["REDIS_URL"],
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+# Django-Q
+
+Q_CLUSTER = {
+    'name': 'myproject',
+    'workers': 8,
+    'recycle': 500,
+    'timeout': 60,
+    'compress': True,
+    'save_limit': 250,
+    'queue_limit': 500,
+    'cpu_affinity': 1,
+    'label': 'Django Q',
+    'redis': {
+        'host': os.environ["HOST"],
+        'port': 6379,
+        'db': 0, }
+}
+
 
 # try:
 #     from settings_local import *
