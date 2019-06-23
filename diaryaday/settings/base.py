@@ -12,24 +12,17 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
-import boto3
-s3 = boto3.resource('s3')
+# import boto3
+# s3 = boto3.resource('s3')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['PENIS']
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #CHANGE TO FALSE LATER
-
 ALLOWED_HOSTS = []
 
+#i have no fucking IDEA:
+from boto.s3.connection import S3Connection
+s3 = S3Connection('AKIAJ56PGWFHCZSK7Y5Q', 'LBCifCoM66vtuevJC1uf8AMdURPcNPkFQzoK/TpL')
 
 # Application definition
 
@@ -45,6 +38,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'django_countries',
     'crispy_forms',
+    'boto3',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -137,39 +131,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-
-# Caching
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": os.environ.get('REDIS_URL'),
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
-
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-SESSION_CACHE_ALIAS = "default"
-
-# Django-Q
-
-Q_CLUSTER = {
-    'name': 'myproject',
-    'workers': 8,
-    'recycle': 500,
-    'timeout': 60,
-    'compress': True,
-    'save_limit': 250,
-    'queue_limit': 500,
-    'cpu_affinity': 1,
-    'label': 'Django Q',
-    'redis': {
-        'host': 'diaryaday.com',
-        'port': 6379,
-        'db': 0, }
-}
 
 # CKEditor
 
