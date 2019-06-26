@@ -1,4 +1,6 @@
 TODO:
   Frontpage with user and postcount
   Account Creation email - confirmation?
-  debug off for production
+  Javascript Plugin
+  Blogpost With tutorial on django-heroku config vars
+  Devblog

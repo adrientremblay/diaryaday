@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<h1 id = "read-title">Read Entry</h1>
+<h1 id = "diary-head">Read Entry</h1>
 <!-- User can access the page if they are authenticated and have just written an entry or if they are a superuser -->
 {% if user.is_authenticated and write_success == True or user.is_superuser and user.is_authenticated %}
 

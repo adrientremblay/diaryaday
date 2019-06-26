@@ -23,13 +23,13 @@
       {% endblock %}
     </div>
     <div id = "message-bar" class = "standardBox">
-      <div style = "text-decoration : underline">Messages</div>
+      <div style = "text-decoration : underline ; margin-bottom : 20px">Messages</div>
 
       <!-- Messages -->
       {% if messages %}
       <ul class="messages">
           {% for message in messages %}
-          <li{% if message.tags %} class="{{ message.tags }}" style= "border : 2px solid black ; float : left ; margin-left : 0px" {% endif %}>{{ message }}</li>
+          <li{% if message.tags %} class="{{ message.tags }}" style= "float : left ; margin-left : 0px" {% endif %}>{{ message }}</li>
           {% endfor %}
       </ul>
       {% endif %}

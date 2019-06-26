@@ -3,6 +3,9 @@
 #Mac
 .DS_Store
 
+#Redis
+redis.conf
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

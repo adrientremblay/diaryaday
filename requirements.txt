@@ -6,4 +6,4 @@ django-ckeditor
 django_countries
 django_crispy_forms
 django_redis
-boto
+django-dotenv

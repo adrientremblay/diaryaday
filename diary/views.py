@@ -37,7 +37,8 @@ class ProfileView(SuccessMessageMixin, generic.UpdateView):
             'username': writer.username,
             'email': writer.email,
             'first_name': writer.first_name,
-            'last_name' : writer.last_name
+            'last_name' : writer.last_name,
+            'password' : '',
         }
 
     def get_object(self):

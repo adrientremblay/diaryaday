@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import django_heroku
-# import boto3
-# s3 = boto3.resource('s3')
 
 SECRET_KEY = os.environ['SECRET_KEY']
 

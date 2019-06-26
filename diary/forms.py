@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm, ReadOnlyPasswordHashField
 from django.forms import Textarea
 from django.utils.translation import gettext_lazy as _
 from .models import Writer, Entry
@@ -17,10 +17,18 @@ class writerCreationForm(UserCreationForm): # 'writer' is the name of the custom
 
 class writerChangeForm(UserChangeForm):
     # username = forms.CharField(initial = username)
+    password = ReadOnlyPasswordHashField(
+        label=_("Password"),
+        help_text=_(
+            "Raw passwords are not stored, so there is no way to see your "
+            "password, but you can change the password using "
+            "<a href=\"{}\">this form</a>."
+        )
+    )
 
     class Meta:
         model = Writer
-        fields = ('email', 'first_name', 'last_name', 'country')
+        fields = ('email', 'first_name', 'last_name', 'country', 'password')
         country = CountryField().formfield()
         widgets = {'country': CountrySelectWidget()}
 

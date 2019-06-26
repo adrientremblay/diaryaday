@@ -4,7 +4,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  <div class = "index-head">New Entry</div>
+  <div class = "diary-head">New Entry</div>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.media }}
         {{ form.as_p }}
