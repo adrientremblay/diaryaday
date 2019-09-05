@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %} <!-- User is logged in -->
+
+  {% if entry_list %}
+    <!-- The Entry List -->
+    <ul>
+        {% for entry in entry_list %}
+            <li>
+              <div class = "entryDiv">
+                {% include "diary/snippets/entry_snip.html" %}
+
+                <a href = "/diary/{{entry.id}}/delete/">delete</a>
+              </div>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <!-- Nothing to show -->
+      <h5> You have no diary entries to show... </h5>
+      <a href = "/diary/">go back</a>
+    {% endif %}
+
+
+{% else %}
+  <meta http-equiv="REFRESH" content="0;url=/">
+{% endif %}
+{% endblock %}

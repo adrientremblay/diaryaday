@@ -1,6 +1,12 @@
+This is DiaryaDay
+
 TODO:
-  Frontpage with user and postcount
-  Account Creation email - confirmation?
-  Javascript Plugin
-  Blogpost With tutorial on django-heroku config vars
-  Devblog
+  Major Features:
+    Frontpage with user and postcount
+    Javascript Plugin
+    Blogpost With tutorial on django-heroku config vars
+    Change "No password set." message
+    Entry management system
+
+  Deployment Features:
+    System to only allow one entry per day

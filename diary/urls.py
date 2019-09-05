@@ -10,4 +10,6 @@ urlpatterns = [
     path('profile/', views.ProfileView.as_view(), name = 'profile'),
     path('signup/', views.SignUp.as_view(), name = 'signup'),
     path('password/', views.ChangePasswordView.as_view(), name = 'password'),
+    path('manage/', views.ManageEntriesView.as_view(), name = "manage"),
+    path('<int:pk>/delete/', views.DeleteEntryView.as_view(), name = "deleteentry"),
 ]

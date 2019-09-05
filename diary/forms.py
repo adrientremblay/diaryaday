@@ -9,14 +9,23 @@ from django_countries.widgets import CountrySelectWidget
 
 class writerCreationForm(UserCreationForm): # 'writer' is the name of the custom user class
 
+    name = forms.CharField(
+        max_length=100,
+        label=_("First Name"),
+        help_text=_(
+            "<ul>"
+            "<li>Entering a name is NOT required. (name will be displayed with your diary entries when given)</li>"
+            "</ul>"
+        ),
+        required=False,
+    )
+
     class Meta(UserCreationForm):
         model = Writer
-        fields = ('username', 'email', 'first_name', 'last_name', 'country')
-        country = CountryField().formfield()
+        fields = ('username', 'name', 'country')
         widgets = {'country': CountrySelectWidget()}
 
 class writerChangeForm(UserChangeForm):
-    # username = forms.CharField(initial = username)
     password = ReadOnlyPasswordHashField(
         label=_("Password"),
         help_text=_(
@@ -28,14 +37,33 @@ class writerChangeForm(UserChangeForm):
 
     class Meta:
         model = Writer
-        fields = ('email', 'first_name', 'last_name', 'country', 'password')
-        country = CountryField().formfield()
+        fields = ('name', 'country')
         widgets = {'country': CountrySelectWidget()}
 
 class changePasswordForm(PasswordChangeForm):
 
     class Meta:
         model = Writer
+
+class MyReadOnlyPasswordHashWidget(forms.Widget):
+    template_name = 'auth/widgets/read_only_password_hash.html'
+    read_only = True
+
+    def get_context(self, name, value, attrs):
+        context = super().get_context(name, value, attrs)
+        summary = []
+        if not value or value.startswith(UNUSABLE_PASSWORD_PREFIX):
+            summary.append({'label': gettext("No password set.")})
+        else:
+            try:
+                hasher = identify_hasher(value)
+            except ValueError:
+                summary.append({'label': gettext("Invalid password format or unknown hashing algorithm.")})
+            else:
+                for key, value_ in hasher.safe_summary(value).items():
+                    summary.append({'label': gettext(key), 'value': value_})
+        context['summary'] = summary
+        return context
 
 class EntryForm(forms.ModelForm):
 

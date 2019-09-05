@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'django_countries',
     'crispy_forms',
-    'boto',
+    # 'boto',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

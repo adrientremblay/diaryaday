@@ -5,7 +5,15 @@
 {% block content %}
 {% if user.is_authenticated %} <!-- User is logged in -->
 
-  <div class = "diary-head">Hello {{ user.username }}! </div>
+  <div class = "diary-head">
+    Hello
+    {% if user.name %}
+      {{ user.name }}!
+    {% else %}
+      {{ user.username }}!
+    {% endif %}
+
+  </div>
 
   <div class = standardBox>
     <h4 id = "index-subHead"> What would you like to do today? <h4/>
@@ -13,6 +21,7 @@
     <ul id = "actions-list">
       <li class = "ai"><a  href = "{% url 'write' %}">Write</a></li>
       <li class = "ai"><a href = "{% url 'profile' %}">Profile</a></li>
+      <li class = "ai"><a href = "{% url 'manage' %}">Manage</a></li>
       <li class = "ai"><a href = "{% url 'logout' %}">Logout</a></li>
     </ul>
 

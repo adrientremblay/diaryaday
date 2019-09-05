@@ -7,3 +7,4 @@ django_countries
 django_crispy_forms
 django_redis
 django-dotenv
+boto3

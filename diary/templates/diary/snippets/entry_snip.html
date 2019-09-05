@@ -1,0 +1,12 @@
+<p>Dear Diary,</p>
+<div class = "standardBox">
+  {{entry | safe}}
+</div>
+<p id = "read-label">entry by
+  {% if entry.writer.name %}
+    {{entry.writer.name}}
+  {% else %}
+    {{entry.writer.username}}
+  {% endif %}
+  from {{entry.writer.country.name}} <i class="{{ entry.writer.country.flag_css }}"></i><br \>on {{entry.pub_date}}
+</p>

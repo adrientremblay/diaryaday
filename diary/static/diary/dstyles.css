@@ -34,8 +34,15 @@ main {
 
 .hElement {
   display: inline-block;
-  margin-left: 50px;
+  margin-left: 40px;
+  padding : 0px 5px 0px 5px;
   float: right;
+  font-weight : bold;
+  border-radius: 20%;
+}
+
+.hElement:hover {
+  background-color: #f2f2f2;
 }
 
 #index-box {
@@ -92,6 +99,7 @@ a {
 
 #message-bar {
   width : 20vw;
+  /* height : 550px; /**REDNECK CODE**/ */
 }
 
 li {
@@ -105,6 +113,13 @@ ul {
 .messages {
   margin-left : 0px;
   padding-left : 0px;
+}
+
+.entryDiv {
+  background-color: #f2f2f2;
+  border-radius: 5%;
+  margin: 10px 0px 10px 0px;
+  padding: 10px 10px 10px 10px;
 }
 
 /* .success {

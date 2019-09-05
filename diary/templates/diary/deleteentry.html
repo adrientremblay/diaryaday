@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %} <!-- User is logged in -->
+
+  <form method="post">{% csrf_token %}
+      <p>Are you sure you want to delete this entry?</p>
+      <input type="submit" value="Yes">
+  </form>
+
+{% else %}
+  <meta http-equiv="REFRESH" content="0;url=/">
+{% endif %}
+{% endblock %}

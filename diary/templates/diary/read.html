@@ -4,20 +4,16 @@
 
 {% block content %}
 
-<h1 id = "diary-head">Read Entry</h1>
+<h1 id = "diary-head">Thanks for submitting an entry!  Here is an entry from someone else:</h1>
 <!-- User can access the page if they are authenticated and have just written an entry or if they are a superuser -->
 {% if user.is_authenticated and write_success == True or user.is_superuser and user.is_authenticated %}
 
-  <p>Dear Diary,</p>
-  <div class = "standardBox">
-    {{entry | safe}}
-  </div>
+  {% include "diary/snippets/entry_snip.html" %}
 
-  <p id = "read-label">entry by {{entry.writer.first_name}} from {{entry.writer.country.name}} <i class="{{ entry.writer.country.flag_css }}"></i><br \>on {{entry.pub_date}}</p>
 {% elif not user.is_authenticated %} <!-- Redirect to homepage if user is not even logged in -->
   <meta http-equiv="REFRESH" content="0;url=/">
 {% else %}
-  <h2 style = "margin-left : 50px">You may only read a diary entry after submitting one yourself ;)</h2>
+  <h5 style = "margin-left : 50px">You may only read a diary entry after submitting one yourself ;)</h5>
   <a href = "/diary/">take me home</a>
 {% endif %}
 {% endblock %}

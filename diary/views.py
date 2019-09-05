@@ -6,11 +6,13 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.base import TemplateView
+from django.views.generic import ListView
 from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic.edit import FormMixin
 from django.shortcuts import get_object_or_404
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth import views as auth_views
+from django.contrib import messages
 
 #importing models
 from .forms import writerCreationForm, writerChangeForm, changePasswordForm, EntryForm
@@ -31,14 +33,9 @@ class ProfileView(SuccessMessageMixin, generic.UpdateView):
 
     def get_initial(self):
         # get_initial should return dict. They should be rendered in template.
-        writer = Writer.objects.get(pk=1) # first get data from database.
         # dictionary key names should be same as they are in forms.
         return {
-            'username': writer.username,
-            'email': writer.email,
-            'first_name': writer.first_name,
-            'last_name' : writer.last_name,
-            'password' : '',
+            'name': self.request.user.name,
         }
 
     def get_object(self):
@@ -85,3 +82,20 @@ class ChangePasswordView(SuccessMessageMixin, auth_views.PasswordChangeView):
             if self.request.method == 'POST':
                 kwargs['data'] = self.request.POST
             return kwargs
+
+class ManageEntriesView(ListView):
+    model = Entry
+    template_name = "diary/manage.html"
+
+    def get_queryset(self):
+        return Entry.objects.filter(writer=self.request.user)
+
+class DeleteEntryView(DeleteView):
+    model = Entry
+    success_url = '/diary/'
+    template_name = "diary/deleteentry.html"
+    success_message = "Entry Deleted!"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(DeleteEntryView, self).delete(request, *args, **kwargs)
